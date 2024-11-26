@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/ui_src/icons">
+        <file>ui_src/icons/mti-大风.png</file>
+    </qresource>
+</RCC>
