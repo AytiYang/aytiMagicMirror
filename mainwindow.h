@@ -5,6 +5,10 @@
 #include <QMainWindow>
 #include <QTimer>
 
+#include <QTableWidget>
+#include <QHeaderView>
+#include <QDateTime>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -16,9 +20,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void setTableRowsOpacity(QTableWidget* table);
 
 private slots:
     void updateTime();
+
 
 private:
     Ui::MainWindow *ui;

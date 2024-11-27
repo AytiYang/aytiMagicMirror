@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 9.0.2, 2024-11-26T18:33:35. -->
+<!-- Written by QtCreator 9.0.2, 2024-11-27T17:44:55. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -417,10 +417,10 @@
        <value type="QString">/home/ayti/sysroot-RPiOS</value>
       </valuelist>
       <valuelist type="QVariantList" key="RemoteLinux.LastDeployedLocalTimes">
-       <value type="QDateTime">2024-11-26T18:19:13.000</value>
+       <value type="QDateTime">2024-11-27T17:22:26.000</value>
       </valuelist>
       <valuelist type="QVariantList" key="RemoteLinux.LastDeployedRemoteTimes">
-       <value type="QDateTime">2024-11-26T18:19:15.000</value>
+       <value type="QDateTime">2024-11-27T17:22:27.000</value>
       </valuelist>
      </valuemap>
      <value type="qlonglong" key="ProjectExplorer.BuildStepList.StepsCount">3</value>

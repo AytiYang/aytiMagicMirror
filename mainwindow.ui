@@ -28,12 +28,18 @@
      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="5,1">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="3,1">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_4">
+          <property name="spacing">
+           <number>0</number>
+          </property>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,1,0">
+           <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,3,2,9">
             <property name="spacing">
-             <number>3</number>
+             <number>0</number>
             </property>
             <property name="sizeConstraint">
              <enum>QLayout::SetDefaultConstraint</enum>
@@ -53,10 +59,10 @@
                <locale language="English" country="UnitedStates"/>
               </property>
               <property name="text">
-               <string>Thursday</string>
+               <string>Thur</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -75,7 +81,7 @@
                <string>June 30</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -94,7 +100,7 @@
                <string>2024</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -114,7 +120,13 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="3,1">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
             <item>
              <widget class="QLabel" name="timeLabel">
               <property name="font">
@@ -148,8 +160,14 @@
           </item>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <item>
                <widget class="QLabel" name="todolistStrLabel">
                 <property name="font">
@@ -181,7 +199,7 @@
              </layout>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="4,1">
+             <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="4,8">
               <property name="spacing">
                <number>0</number>
               </property>
@@ -218,7 +236,10 @@
              </layout>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="4,4">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <item>
                <widget class="QTableWidget" name="todoTableWidget">
                 <property name="styleSheet">
@@ -314,7 +335,7 @@
           <item>
            <layout class="QVBoxLayout" name="verticalLayout">
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,1">
               <item>
                <spacer name="horizontalSpacer_2">
                 <property name="orientation">
@@ -347,7 +368,7 @@
              </layout>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,1">
               <item>
                <widget class="QLabel" name="weatherIconLabel">
                 <property name="styleSheet">
@@ -409,7 +430,7 @@
             </attribute>
             <row>
              <property name="text">
-              <string> </string>
+              <string/>
              </property>
              <property name="background">
               <color alpha="0">
@@ -421,7 +442,7 @@
             </row>
             <row>
              <property name="text">
-              <string> </string>
+              <string/>
              </property>
              <property name="background">
               <color alpha="0">
@@ -442,7 +463,7 @@
             </row>
             <row>
              <property name="text">
-              <string> </string>
+              <string/>
              </property>
              <property name="background">
               <color alpha="0">
@@ -484,7 +505,7 @@
             </row>
             <column>
              <property name="text">
-              <string> </string>
+              <string/>
              </property>
              <property name="background">
               <color>
@@ -505,17 +526,17 @@
             </column>
             <column>
              <property name="text">
-              <string> </string>
+              <string/>
              </property>
             </column>
             <column>
              <property name="text">
-              <string> </string>
+              <string/>
              </property>
             </column>
             <column>
              <property name="text">
-              <string> </string>
+              <string/>
              </property>
              <property name="foreground">
               <brush brushstyle="NoBrush">
