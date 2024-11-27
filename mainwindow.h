@@ -1,13 +1,12 @@
-// mainwindow.h
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
 #include <QTimer>
-
 #include <QTableWidget>
-#include <QHeaderView>
 #include <QDateTime>
+#include <QJsonObject>
+#include "api/ApiManager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,15 +19,21 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void setTableRowsOpacity(QTableWidget* table);
 
 private slots:
     void updateTime();
-
+    void updateWeather();
+    void handleWeatherResponse(const QJsonObject &json);
+    void handleWeatherResponse2(const QJsonObject &json);
 
 private:
     Ui::MainWindow *ui;
     QTimer *timer;
+    QTimer *apiTimer;
+    ApiManager *apiManager;
+    ApiManager *apiManager2;
+
+    void setTableRowsOpacity(QTableWidget* table);
 };
 
 #endif // MAINWINDOW_H

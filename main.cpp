@@ -10,13 +10,16 @@
 #include <QtCharts/QValueAxis>
 #include <QDateTime>
 
+
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    test();
+    //test();
+
     MainWindow w;
     //w.show();
-    w.showFullScreen();
+    //w.showFullScreen();
     return a.exec();
 }
 
