@@ -2,15 +2,20 @@
 #include "./ui_mainwindow.h"
 #include "api/ApiManager.h"
 
+
+
+
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , timer(new QTimer(this))
     , apiManager(new ApiManager(this))
     , apiManager2(new ApiManager(this)) // 初始化 apiManager2
+    ,cap(0)
 {
     ui->setupUi(this);
-
     // 设置定时器每分钟触发一次
     connect(timer, &QTimer::timeout, this, &MainWindow::updateTime);
     timer->start(30000); // 30000 毫秒 = 30 秒
@@ -25,12 +30,20 @@ MainWindow::MainWindow(QWidget *parent)
 
     // 初始化时立即调用一次API
     updateWeather();
+       //ui->photoLabel->setFixedSize(1000,1000);
+       if (!cap.isOpened()) {
+           qWarning("Error: Could not open camera");
+           return;
+       }
+
+       connect(timer, &QTimer::timeout, this, &MainWindow::updateFrame);
+       timer->start(20); // 每 30 毫秒更新一次画面
+
+
+
+
 }
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
 
 void MainWindow::setTableRowsOpacity(QTableWidget* table) {
     int rowCount = table->rowCount();
@@ -95,4 +108,52 @@ void MainWindow::handleWeatherResponse2(const QJsonObject &json)
     qDebug() << "Received JSON:" << json;
     // 在这里处理JSON数据，例如更新UI
     // 你可以在这里编写你的逻辑
+}
+
+
+void MainWindow::updateFrame()
+{
+    cv::Mat frame;
+    cap >> frame; // 读取摄像头当前帧
+    if (frame.empty()) {
+        return;
+    }
+
+    // 获取QLabel的大小
+    QSize labelSize = ui->photoLabel->size();
+
+    // 将图像转换为QImage
+    QImage qImage = matToQImage(frame);
+
+    // 调整QImage的大小以适应QLabel的大小
+    QImage resizedImage = qImage.scaled(labelSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
+    // 将调整大小后的QImage转换为QPixmap并显示在QLabel上
+    ui->photoLabel->setPixmap(QPixmap::fromImage(resizedImage));
+}
+
+
+
+
+QImage MainWindow::matToQImage(const cv::Mat &mat)
+{
+    switch (mat.type()) {
+    case CV_8UC1:
+        return QImage(mat.data, mat.cols, mat.rows, mat.step, QImage::Format_Grayscale8);
+    case CV_8UC3:
+        return QImage(mat.data, mat.cols, mat.rows, mat.step, QImage::Format_RGB888).rgbSwapped();
+    default:
+        qWarning("Unsupported image format");
+        return QImage();
+    }
+}
+
+
+MainWindow::~MainWindow() {
+    cap.release(); // 释放摄像头
+    delete timer;
+    delete apiManager;
+    delete apiManager2;
+    delete apiTimer;
+    delete ui;
 }

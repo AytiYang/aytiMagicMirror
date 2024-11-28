@@ -331,7 +331,7 @@
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="5,5,3">
+         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="5,0,3">
           <item>
            <layout class="QVBoxLayout" name="verticalLayout">
             <item>
@@ -657,22 +657,24 @@
           </item>
           <item>
            <widget class="QWidget" name="photoWidget" native="true">
-            <widget class="QLabel" name="label_10">
-             <property name="geometry">
-              <rect>
-               <x>80</x>
-               <y>80</y>
-               <width>66</width>
-               <height>18</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(255, 255, 255);</string>
-             </property>
-             <property name="text">
-              <string>TextLabel</string>
-             </property>
-            </widget>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <item>
+              <widget class="QLabel" name="photoLabel">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>photoLabel</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>

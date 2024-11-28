@@ -9,8 +9,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Charts Network)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Charts Network)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Charts Network Multimedia MultimediaWidgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Charts Network Multimedia MultimediaWidgets)
 
 # 头文件 cpp文件
 set(PROJECT_SOURCES
@@ -20,10 +20,14 @@ set(PROJECT_SOURCES
     mainwindow.ui
     sql/sqlConnect.h
     sql/sqlConnect.cpp
-    AI/wav2str.cpp
-    AI/wav2str.h
+#    AI/wav2str.cpp
+#    AI/wav2str.h
     api/ApiManager.h
     api/ApiManager.cpp
+    audio/miniaudio.h
+    #cam/smile.h
+    #cam/smile.cpp
+
 )
 set(CMAKE_AUTORCC ON)
 qt_add_resources(PROJECT_SOURCES magicMirror_src.qrc)
@@ -38,7 +42,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 find_library(MARIADB_LIB mariadb)
 
 #
-find_package(SndFile REQUIRED)
+#find_package(SndFile REQUIRED)
 
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -61,7 +65,17 @@ else()
     endif()
 endif()
 
-target_link_libraries(magicMirror PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Charts Qt${QT_VERSION_MAJOR}::Network ${OpenCV_LIBRARIES} onnxruntime ${MARIADB_LIB} SndFile::sndfile)
+target_link_libraries(magicMirror PRIVATE
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::Charts
+    Qt${QT_VERSION_MAJOR}::Network
+    Qt${QT_VERSION_MAJOR}::Multimedia
+    Qt${QT_VERSION_MAJOR}::MultimediaWidgets
+    ${OpenCV_LIBRARIES}
+    onnxruntime
+    ${MARIADB_LIB}
+    #SndFile::sndfile
+)
 
 set_target_properties(magicMirror PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
@@ -77,3 +91,6 @@ if(QT_VERSION_MAJOR EQUAL 6)
         RUNTIME DESTINATION "$ENV{HOME}/Desktop"
     )
 endif()
+
+
+
