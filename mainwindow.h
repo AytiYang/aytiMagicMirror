@@ -14,6 +14,11 @@
 #include <QTimer>
 #include <opencv2/opencv.hpp>
 
+#include <QJsonArray>
+#include <QMap>
+#include <QString>
+
+
 
 
 QT_BEGIN_NAMESPACE
@@ -31,16 +36,17 @@ public:
 private slots:
     void updateTime();
     void updateWeather();
-    void handleWeatherResponse(const QJsonObject &json);
-    void handleWeatherResponse2(const QJsonObject &json);
+    void handleWeatherRealtimeResponse(const QJsonObject &json);
+    void handleWeatherForecastResponse(const QJsonObject &json);
 
     void updateFrame();
 private:
     Ui::MainWindow *ui;
-    QTimer *timer;
-    QTimer *apiTimer;
-    ApiManager *apiManager;
-    ApiManager *apiManager2;
+    QTimer *timer_30s;
+    QTimer *timer_15min;
+    QTimer *timer_20ms;
+    ApiManager *apiManager_weatherRealtime;
+    ApiManager *apiManager_weatherForecast;
 
     //QLabel *cameraLabel;
     //QTimer *timer;
@@ -49,6 +55,7 @@ private:
     QImage matToQImage(const cv::Mat& mat);
 
     void setTableRowsOpacity(QTableWidget* table);
+    void setTableData(QTableWidget* table);
 };
 
 #endif // MAINWINDOW_H

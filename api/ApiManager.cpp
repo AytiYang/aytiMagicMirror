@@ -34,7 +34,7 @@ void ApiManager::handleReply(QNetworkReply *reply) {
     if (reply->error() == QNetworkReply::NoError) {
         QByteArray response = reply->readAll();
         QString responseString = QString::fromUtf8(response);
-        qDebug() << "Response:" << responseString;
+        //qDebug() << "Response:" << responseString;
 
         // 解析JSON数据
         QJsonDocument jsonResponse = QJsonDocument::fromJson(response);
